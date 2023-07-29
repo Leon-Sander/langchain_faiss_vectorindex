@@ -1,0 +1,11 @@
+faiss_indexstore:
+  save_path: 'faiss_db/'
+  index_name: 'books'
+
+embeddings:
+  name: 'all-MiniLM-L6-v2'
+  device: 'cpu'
+
+TextSplitter:
+  chunk_size: 256
+  chunk_overlap: 12

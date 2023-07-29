@@ -1,0 +1,9 @@
+langchain
+python-dotenv
+openai
+pypdf
+sentence_transformers
+faiss-cpu
+#faiss-gpu
+python-telegram-bot
+tqdm
