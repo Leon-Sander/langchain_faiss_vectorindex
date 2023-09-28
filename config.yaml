@@ -7,5 +7,9 @@ embeddings:
   device: 'cpu'
 
 TextSplitter:
-  chunk_size: 256
-  chunk_overlap: 12
+  #The chunk size here means the number of characters.
+  #The embedding model can only handle 256 tokens
+  #Based on Openai approximately 4 characters equal one token 
+  #therefore we set the chunksize to 1024 characters approximating 256 tokens
+  chunk_size: 1024 
+  chunk_overlap: 52
