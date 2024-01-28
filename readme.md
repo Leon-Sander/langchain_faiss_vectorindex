@@ -14,6 +14,21 @@ running the add_document.py file.
 If you want to run everything on gpu, just install faiss-gpu (you must uninstall faiss-cpu then),
 and put the embeddings on the gpu by defining it in the config.yaml
 
+### Getting Started
+
+To get started with The document chat, clone the repository and follow these simple steps:
+
+1. **Upgrade pip**: pip install --upgrade pip
+
+2. **Install Requirements**: enter your api keys in the .env file
+
+3. **Customize config file**: Check the config file and change accordingly to the models you downloaded.
+
+4. **Run file**: run ```python3 create_index.py``` , it will create the FAISS index with all the documents in the data folder
+
+5. **Start Chatting**: ```python3 document_chat.py```
+
+
 ### Changes I made to the code you see in the video
 
 I added a config.yaml file where you can define the huggingface embeddings you want to use, and on which device to run it (cpu or cuda).

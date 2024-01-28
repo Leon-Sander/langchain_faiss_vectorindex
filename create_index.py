@@ -1,4 +1,4 @@
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from utils import load_documents, save_db, load_embeddings
 
 embedding_function = load_embeddings()

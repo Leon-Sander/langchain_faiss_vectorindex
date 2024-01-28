@@ -1,6 +1,6 @@
 from langchain.chains import RetrievalQA
 from dotenv import load_dotenv
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from utils import load_embeddings, load_db
 
 
@@ -14,7 +14,7 @@ class retrieval_chat():
 
         db = load_db(embedding_function)
 
-        self.qa = RetrievalQA.from_llm(llm=ChatOpenAI(temperature=0.1), retriever=db.as_retriever(kwargs={"k": 7}), return_source_documents=True)
+        self.qa = RetrievalQA.from_llm(llm=ChatOpenAI(temperature=0.1), retriever=db.as_retriever(kwargs={"k": 3}), return_source_documents=True)
 
     def answer_question(self, question :str):
         output = self.qa({"query": question})
