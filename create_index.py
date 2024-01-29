@@ -1,11 +1,6 @@
-from langchain_community.vectorstores import FAISS
-from utils import load_documents, save_db, load_embeddings
+from utils import load_documents
+from add_documents import add_documents
 
-embedding_function = load_embeddings()
-documents = load_documents("data/")
-
-db = FAISS.from_documents(documents, embedding_function)
-print("Index Created")
-save_db(db)
-
-print(db.similarity_search("ISO/IEC 27001 standard"))
+if __name__ == "__main__":
+    documents = load_documents("data/")
+    add_documents(documents)

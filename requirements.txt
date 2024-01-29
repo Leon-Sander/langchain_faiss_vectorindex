@@ -4,7 +4,6 @@ python-dotenv
 openai
 pypdf
 sentence_transformers
-faiss-cpu
-#faiss-gpu
+chromadb
 python-telegram-bot
 tqdm

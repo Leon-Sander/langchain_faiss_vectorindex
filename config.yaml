@@ -1,6 +1,6 @@
-faiss_indexstore:
-  save_path: 'faiss_db/'
-  index_name: 'books'
+chromadb:
+  save_path: 'chromadb/'
+  collection_name: 'pdfs'
 
 embeddings:
   name: 'all-MiniLM-L6-v2'

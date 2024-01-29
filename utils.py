@@ -1,9 +1,10 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores import Chroma
 from glob import glob
 from tqdm import tqdm
+import chromadb
 import yaml
 
 def load_config():
@@ -30,10 +31,13 @@ def load_documents(directory : str):
 
     return documents
 
-def load_db(embedding_function, save_path=config["faiss_indexstore"]["save_path"], index_name=config["faiss_indexstore"]["index_name"]):
-    db = FAISS.load_local(folder_path=save_path, index_name=index_name, embeddings = embedding_function)
-    return db
+def load_db(embeddings, save_path=config["chromadb"]["save_path"], collection_name=config["chromadb"]["collection_name"]):
+    persistent_client = chromadb.PersistentClient(save_path)
 
-def save_db(db, save_path=config["faiss_indexstore"]["save_path"], index_name=config["faiss_indexstore"]["index_name"]):
-    db.save_local(save_path, index_name)
-    print("Saved db to " + save_path + index_name)
+    langchain_chromadb = Chroma(
+        client=persistent_client,
+        collection_name=collection_name,
+        embedding_function=embeddings,
+    )
+
+    return langchain_chromadb
